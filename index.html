@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chetali - My Simple Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS STARTS HERE (Simplified) --- */
+
+        /* Basic Colors */
+        :root {
+            --primary-color: #6a0572; /* Deep Purple */
+            --accent-color: #f7b731; /* Golden Yellow */
+            --text-color: #333;
+            --light-background: #ffffff;
+            --dark-background: #f0f2f5;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-background);
+            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+        }
+
+        /* Container for content width */
+        .container {
+            max-width: 1000px; /* Slightly narrower for simplicity */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Links */
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease; /* Smooth color change on hover */
+        }
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header and Navigation */
+        header {
+            background: var(--light-background);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Simple shadow */
+            position: sticky; /* Keeps header at top */
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 400; /* Simpler font weight */
+            padding: 5px 0;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section (First Section) */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); /* Simple gradient */
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 0;
+            min-height: 70vh; /* Minimum height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            border-radius: 70%; /* Makes it round */
+            object-fit: cover; /* Keeps image aspect ratio */
+            border: 4px solid #ffffff; /* White border */
+            margin-bottom: 25px;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color); /* Text color from primary */
+            padding: 12px 25px;
+            border-radius: 5px; /* Slightly rounded corners */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #e6a72e; /* Slightly darker yellow on hover */
+            transition: 2s;
+            animation-duration: 2s;
+        }
+        .btn.bounce {
+        animation: bounce 2s infinite; /* Loop the animation forever */
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 60px 0; /* Consistent padding */
+            text-align: center;
+        }
+        section:nth-of-type(even) { /* Alternate background for sections */
+            background-color: var(--dark-background);
+        }
+        section:nth-of-type(odd) {
+            background-color: var(--light-background);
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        section h2::after { /* Underline effect for H2 */
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        .about-section p {
+            max-width: 700px;
+            margin: 0 auto 15px auto;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        /* .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+        }
+
+        .skill-item {
+            background-color: var(--light-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        } */
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background-color: var(--light-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px; /* Consistent image height */
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-card h3 {
+            margin: 20px 20px 10px;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+
+        .project-card p {
+            margin: 0 20px 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .project-links {
+            padding: 0 20px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .project-links .btn {
+            padding: 8px 15px;
+            font-size: 0.9em;
+            color: #ffffff; /* Buttons text white */
+            background-color: var(--primary-color); /* Primary color for buttons */
+        }
+        .project-links .btn:hover {
+            background-color: var(--accent-color); /* Accent color on hover */
+            color: var(--primary-color); /* Primary text on hover */
+        }
+        .project-links .btn.secondary { /* For GitHub link */
+            background-color: #6c757d; /* Grey */
+        }
+        .project-links .btn.secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Contact Section */
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .contact-info a {
+            font-weight: 600;
+            color: var(--accent-color); /* Use accent color for contact links */
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column; /* Stack logo and nav vertically */
+            }
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 0 12px;
+            }
+
+            .hero-section {
+                padding: 50px 0;
+                min-height: 60vh;
+            }
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1.1em;
+            }
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+            .about-section p {
+                font-size: 0.95em;
+            }
+
+            /* .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 15px;
+            }
+            .skill-item {
+                font-size: 0.95em;
+                padding: 15px; */
+            
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+                max-width: 350px; /* Constrain width of single card */
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .project-card h3 {
+                font-size: 1.3em;
+            }
+            .project-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2em;
+            }
+            .hero-section p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 10px 20px;
+            }
+            nav ul li {
+                margin: 0 8px;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        /* --- CSS ENDS HERE --- */
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#hero">Chetali</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <!-- <li><a href="#skills">Skills</a></li> -->
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <img src="image/myphoto.jpg" alt="Chetali's Photo" class="profile-pic"> 
+                <h1>Hello, I'm Chetali</h1>
+                <p>An aspiring software developer</p>
+                <a href="#projects" class="btn">View My Work</a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                Hello! I am Chetali, currently pursuing my B.Tech in Computer Science Engineering in my first year. I have a understanding of HTML and CSS, and my strong interest lies in web development. I am always eager to delve deeper into the world of technology and design, consistently striving to learn and improve.
+            </p>
+            <p>
+                In my free time, I enjoy exploring new coding tutorials, designing user interfaces, and reading fantasy novels. 
+            </p>
+            <h2>Why I Want to join MSC-MSIT</h2>
+            <p>
+                My interest lies strongly in the field of Information Technology, and I am particularly keen on joining the MSC MSIT Society. I believe it offers an incredible platform to expand my knowledge, collaborate with like-minded individuals, and contribute to innovative projects. I'm motivated by the prospect of learning from experienced members and applying my skills in a dynamic environment, pushing my boundaries in the world of IT. I genuinely want to be a part of this community to grow and make a meaningful impact, as I am a diligent learner and a high-performer.
+            </p>
+
+
+        </div>
+    </section>
+
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/300x180/6a0572/FFFFFF?text=My+First+Portfolio" alt="My First Portfolio Project Image">
+                    <h3>My First Portfolio</h3>
+                    <p>A personal portfolio website built with HTML and CSS, showcasing foundational web development skills and personal information.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo</a>
+                        <a href="#" target="_blank" class="btn secondary">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://placehold.co/300x180/d10000/FFFFFF?text=Ecommerce" alt="Ecommerce">
+                    <h3>Ecommerce</h3>
+                    <p>A visually appealing Ecommerce platform, designed and developed using HTML and CSS to practice layout and styling principles.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo</a>
+                        <a href="#" target="_blank" class="btn secondary">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:chetali058@gmail.com">chetali058@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/chetali058/" target="_blank">linkedin.com/in/chetali058</a></p>
+                <p>GitHub: <a href="https://github.com/Kittykat580" target="_blank">github.com/kittykt580</a></p>
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Chetali. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
